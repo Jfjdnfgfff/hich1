@@ -1,0 +1,6 @@
+{
+  "name": "Adem Nutrition",
+  "description": "Boutique de suppléments de qualité premium en Algérie",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

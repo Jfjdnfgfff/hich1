@@ -1,0 +1,2678 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adem Nutrition - Suppléments de qualité premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat (Latin) and Cairo (Arabic) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Remix Icons CDN for Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Montserrat", "sans-serif"],
+              arabic: ["Cairo", "sans-serif"],
+            },
+            colors: {
+              "brand-dark": "#1a1a1a",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @keyframes marquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+      .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 20s linear infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+    <!-- Top Bar -->
+    <div
+      class="bg-black text-white py-2 px-4 flex justify-between items-center border-none select-none overflow-hidden h-11"
+    >
+      <!-- Scrolling Announcement Area -->
+      <div class="flex-1 overflow-hidden relative flex items-center mr-4">
+        <div class="animate-marquee gap-12 text-[10px] font-semibold tracking-wider text-gray-100 uppercase whitespace-nowrap">
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <!-- Repeat for perfect continuous loop -->
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-[8px] text-gray-500">✦</span>
+            <span>🇩🇿</span>
+            <span>Livraison partout en Algérie</span>
+            <span class="text-[8px] text-gray-500">✦</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Actions (🚚 and A R) -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <div
+          class="border border-neutral-800 hover:border-gray-500 px-3 py-1 flex items-center justify-center cursor-pointer transition h-7 w-11 bg-black select-none text-base"
+          title="Frais de livraison"
+        >
+          <span>🚚</span>
+        </div>
+        <div
+          class="border border-neutral-800 hover:border-gray-500 px-3 py-1 flex items-center justify-center cursor-pointer transition text-[10px] font-bold tracking-widest text-white h-7 bg-black uppercase font-sans select-none"
+          onclick="toggleLanguage()"
+        >
+          A R
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="fixed inset-0 bg-white z-[60] hidden flex-col transition-opacity duration-300 opacity-0 font-sans">
+      <div class="px-4 py-4 sm:py-6 border-b border-gray-100 flex items-center gap-4">
+        <i class="ri-search-line text-xl sm:text-2xl text-gray-400"></i>
+        <input type="text" id="search-input" placeholder="Rechercher un produit..." class="flex-1 text-base sm:text-xl font-black uppercase tracking-widest text-black focus:outline-none placeholder-gray-300" onkeyup="handleSearch(event)" autocomplete="off" />
+        <button onclick="closeSearch()" class="text-2xl text-gray-400 hover:text-black transition">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto bg-gray-50 p-4 pb-20">
+        <div class="max-w-6xl mx-auto">
+          <h3 id="search-status" class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Tapez pour rechercher</h3>
+          <div id="search-results" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
+            <!-- Results go here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <header
+      class="bg-white sticky top-0 z-40  shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Hamburger -->
+        <button
+          id="menu-btn"
+          class="text-2xl text-black hover:text-gray-600 transition"
+        >
+          <i class="ri-menu-line"></i>
+        </button>
+
+        <!-- Logo -->
+        <div
+          class="text-xl sm:text-2xl font-black tracking-widest uppercase cursor-pointer flex items-center"
+          onclick="filterProducts('all')"
+        >
+          <span class="text-black">ADEM</span>
+          <span class="text-[#000000] ml-1.5">NUTRITION</span>
+        </div>
+
+        <!-- Icons -->
+        <div class="flex items-center gap-4 sm:gap-6 text-xl">
+          <button class="hover:text-gray-500 transition" onclick="openSearch()">
+            <i class="ri-search-line"></i>
+          </button>
+          <button class="hover:text-gray-500 transition hidden sm:block">
+            <i class="ri-user-line"></i>
+          </button>
+          <button class="hover:text-gray-500 transition relative" onclick="openCartPage()">
+            <i class="ri-shopping-bag-line"></i>
+            <span
+              class="absolute -top-1 -right-1.5 bg-[#000000] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="border-t border-gray-100 px-4 bg-white overflow-x-auto">
+        <div
+          class="max-w-7xl mx-auto flex gap-6 sm:gap-10 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-400 whitespace-nowrap py-3"
+        >
+          <a href="#" id="nav-packs" class="hover:text-black transition"
+            >Packs</a
+          >
+          <a
+            href="#"
+            id="nav-products"
+            class="text-black border-b-2 border-black pb-1 transition"
+            >Tous les produits</a
+          >
+          <a href="#" id="nav-categories" class="hover:text-black transition"
+            >Catégories</a
+          >
+          <a
+            href="#"
+            id="nav-sales"
+            class="hover:text-gray-500 transition text-black"
+            onclick="filterProducts('fatburner', 'Soldes')"
+            >Soldes</a
+          >
+          <a
+            href="#"
+            id="nav-cart"
+            class="hover:text-black transition text-[#000000] flex items-center gap-1 font-arabic"
+            onclick="openCartPage(); event.preventDefault();"
+          >
+            <i class="ri-shopping-cart-fill"></i> السلة / Panier
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Mobile Sidebar Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/50 z-50 hidden">
+      <div
+        id="mobile-menu-content"
+        class="bg-white w-4/5 max-w-sm h-full flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out"
+      >
+        <div
+          class="p-4  flex justify-between items-center bg-gray-50"
+        >
+          <span class="font-bold tracking-widest uppercase text-sm">Menu</span>
+          <button
+            id="close-menu"
+            class="text-2xl text-gray-500 hover:text-black"
+          >
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div
+          class="flex flex-col py-2 overflow-y-auto font-bold text-xs tracking-widest uppercase text-gray-600"
+        >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="all"
+            >Tous les produits</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="proteine"
+            >Protéine</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="massgainer"
+            >Mass Gainer</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="creatine"
+            >Créatine</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="booster"
+            >Pré-Workout & Boosters</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="acides"
+            >Acides Aminés</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="vitamines"
+            >Vitamines & Santé</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="fatburner"
+            >Fat Burner</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 border-b border-gray-50 hover:bg-gray-50 hover:text-black transition"
+            data-target="collagene"
+            >Collagène</a
+          >
+          <a
+            href="#"
+            class="sidebar-link p-4 hover:bg-gray-50 hover:text-black transition"
+            data-target="snacks"
+            >Bars & Snacks</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="w-full flex-1">
+      <!-- Home / Products View -->
+      <div id="view-home">
+        <!-- Hero Banner (hidden when filtering) -->
+        <div
+          id="hero-banner"
+          class="w-full bg-[#1a1a1a] text-white py-12 sm:py-20 px-4 text-center relative overflow-hidden"
+        >
+          <div class="absolute inset-0 opacity-20">
+            <img
+              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200"
+              class="w-full h-full object-cover"
+              alt="Background"
+            />
+          </div>
+          <div
+            class="relative z-10 max-w-2xl mx-auto flex flex-col items-center"
+          >
+            <h1
+              class="text-3xl sm:text-5xl font-black mb-4 uppercase tracking-tight italic"
+            >
+              Dépassez vos <span class="text-black">Limites</span>
+            </h1>
+            <p
+              class="text-sm sm:text-base text-gray-300 font-medium mb-8 max-w-lg"
+            >
+              Découvrez notre sélection des meilleurs suppléments sportifs
+              mondiaux pour atteindre vos objectifs physiques.
+            </p>
+            <button
+              class="bg-white text-black font-bold uppercase tracking-widest text-xs sm:text-sm px-8 py-4 "
+              onclick="document.getElementById('products-tabs').scrollIntoView({ behavior: 'smooth' })"
+            >
+              Acheter Maintenant
+            </button>
+          </div>
+        </div>
+
+        <!-- Products Grid Section -->
+        <section class="px-1 sm:px-4 pt-1 sm:pt-4 bg-gray-50 border-none">
+          <div class="max-w-6xl mx-auto">
+            <div
+              id="products-tabs"
+              class="flex font-bold text-[11px] sm:text-xs mb-6 uppercase tracking-widest border-b pb-2"
+            >
+              <span
+                class="mr-6 cursor-pointer border-b-2 border-black pb-2 -mb-[10px]"
+                >Nouveautés</span
+              >
+              <span
+                class="text-gray-400 cursor-pointer hover:text-black transition pb-2"
+                >Meilleures Ventes</span
+              >
+            </div>
+            <div
+              id="category-header"
+              class="hidden flex-col mb-6"
+            >
+              <div class="flex justify-between items-center pb-2">
+                <div class="flex items-baseline gap-3">
+                  <h2
+                    id="category-title"
+                    class="text-xl sm:text-2xl font-black uppercase tracking-tight text-black"
+                  >
+                    PROTÉINE
+                  </h2>
+                  <span id="category-count" class="text-gray-400 text-[11px] sm:text-xs font-medium lowercase"
+                    >0 produits trouvés</span
+                  >
+                </div>
+                <!-- Layout Switcher Icons identical to screenshot -->
+                <div class="flex items-center gap-1.5">
+                  <button
+                    id="layout-btn-1"
+                    class="w-8 h-8 border border-black rounded-sm flex items-center justify-center bg-white text-black transition"
+                    onclick="setMobileLayout('single')"
+                    title="Vue 1 colonne"
+                  >
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <rect x="3" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="3" width="7" height="7" rx="1" />
+                      <rect x="3" y="14" width="7" height="7" rx="1" />
+                      <rect x="14" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                  </button>
+                  <button
+                    id="layout-btn-2"
+                    class="w-8 h-8 border border-gray-200 rounded-sm flex items-center justify-center bg-white text-gray-400 hover:text-black hover:border-gray-400 transition"
+                    onclick="setMobileLayout('double')"
+                    title="Vue 2 colonnes"
+                  >
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <rect x="2" y="2" width="5" height="5" rx="0.5" />
+                      <rect x="9.5" y="2" width="5" height="5" rx="0.5" />
+                      <rect x="17" y="2" width="5" height="5" rx="0.5" />
+                      <rect x="2" y="9.5" width="5" height="5" rx="0.5" />
+                      <rect x="9.5" y="9.5" width="5" height="5" rx="0.5" />
+                      <rect x="17" y="9.5" width="5" height="5" rx="0.5" />
+                      <rect x="2" y="17" width="5" height="5" rx="0.5" />
+                      <rect x="9.5" y="17" width="5" height="5" rx="0.5" />
+                      <rect x="17" y="17" width="5" height="5" rx="0.5" />
+                    </svg>
+                  </button>
+                  <button
+                    id="layout-btn-3"
+                    class="w-8 h-8 border border-gray-200 rounded-sm flex items-center justify-center bg-white text-gray-400 hover:text-black hover:border-gray-400 transition"
+                    onclick="setMobileLayout('list')"
+                    title="Vue liste"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <line x1="3" y1="6" x2="21" y2="6" stroke-linecap="round" />
+                      <line x1="3" y1="12" x2="21" y2="12" stroke-linecap="round" />
+                      <line x1="3" y1="18" x2="21" y2="18" stroke-linecap="round" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="h-[1.5px] bg-black w-full mb-6"></div>
+            </div>
+
+            <!-- 1. All Products Grid Section (Tous les produits) -->
+            <div id="all-products-section" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
+              <!-- Products will be generated dynamically by JavaScript to prevent overlapping/cluttering -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 2. Special Custom Packs View (Section distincte) -->
+      <div id="view-packs" class="hidden bg-[#0d0d0d] pb-20 pt-10">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="border-none pb-8 mb-12 text-center">
+            <span class="text-[#000000] text-xs font-black tracking-[0.3em] uppercase block mb-2">OFFRES SPORTIVES EXCLUSIVES</span>
+            <h2 class="font-black text-3xl sm:text-5xl uppercase italic tracking-tight text-white">
+              NOS PACKS <span class="text-[#000000]">PREMIUM</span>
+            </h2>
+          </div>
+          <div id="special-packs-section" class="flex flex-col gap-12">
+            <!-- Packs will be dynamically generated here in a custom high-impact layout -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories View -->
+      <div id="view-categories" class="hidden bg-gray-50 pb-12">
+        <div class="max-w-6xl mx-auto border-t border-gray-100">
+          <div class="grid grid-cols-3 sm:grid-cols-4 border-l border-gray-100">
+            <!-- WHEY CONCENTRATE -->
+            <div
+              data-target="proteine"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Whey Concentrate"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Whey Concentrate</span
+              >
+            </div>
+            <!-- WHEY ISOLATE -->
+            <div
+              data-target="proteine"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Whey Isolate"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Whey Isolate</span
+              >
+            </div>
+            <!-- WHEY HYDROLYZED -->
+            <div
+              data-target="proteine"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Whey Hydrolyzed"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Whey Hydrolyzed</span
+              >
+            </div>
+            <!-- CASEIN -->
+            <div
+              data-target="proteine"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Casein"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Casein</span
+              >
+            </div>
+            <!-- MASS GAINER -->
+            <div
+              data-target="massgainer"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=200&h=200&auto=format&fit=crop"
+                alt="Mass Gainer"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-full mb-3"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Mass Gainer</span
+              >
+            </div>
+            <!-- CRÉATINE -->
+            <div
+              data-target="creatine"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Créatine"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Créatine</span
+              >
+            </div>
+            <!-- PRE-WORKOUT -->
+            <div
+              data-target="booster"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Pre-Workout"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Pre-Workout</span
+              >
+            </div>
+            <!-- BOOSTERS -->
+            <div
+              data-target="booster"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Boosters"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Boosters</span
+              >
+            </div>
+            <!-- VITAMINES -->
+            <div
+              data-target="vitamines"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Vitamines"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Vitamines</span
+              >
+            </div>
+            <!-- ACIDES AMINÉS -->
+            <div
+              data-target="acides"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Acides Aminés"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Acides Aminés</span
+              >
+            </div>
+            <!-- COLLAGÈNE -->
+            <div
+              data-target="collagene"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Collagène"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Collagène</span
+              >
+            </div>
+            <!-- FAT BURNER -->
+            <div
+              data-target="fatburner"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Fat Burner"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3 mix-blend-multiply"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Fat Burner</span
+              >
+            </div>
+            <!-- BARS & SNACKS -->
+            <div
+              data-target="snacks"
+              class="category-item border-r  bg-white flex flex-col items-center justify-center p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=200&h=200"
+                alt="Bars & Snacks"
+                class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-full mb-3"
+              />
+              <span
+                class="text-[9px] sm:text-[10px] font-bold text-center tracking-widest uppercase text-gray-500"
+                >Bars & Snacks</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout / Shopping Cart Section -->
+      <div id="view-cart" class="hidden bg-gray-50 py-10 ">
+        <div class="max-w-3xl mx-auto px-4">
+          <!-- Back button / العودة للمتجر -->
+          <div class="mb-6 flex justify-start">
+            <button
+              type="button"
+              onclick="filterProducts('all');"
+              class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-500 hover:text-black transition"
+            >
+              <i class="ri-arrow-left-line text-lg"></i>
+              <span>Retour au magasin / العودة إلى المتجر</span>
+            </button>
+          </div>
+
+          <section
+            class="p-4 sm:p-8 bg-white border border-gray-100 shadow-sm rounded-sm"
+          >
+        <h3
+          class="text-center font-bold text-lg mb-8 font-arabic tracking-wide"
+        >
+          تفاصيل الطلب / Checkout
+        </h3>
+
+        <form class="space-y-5 font-arabic" dir="rtl">
+          <!-- Input Group -->
+          <div>
+            <label class="block text-xs font-bold mb-2 text-gray-800 text-right"
+              >الاسم واللقب | NOM ET PRENOM <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              class="w-full border border-gray-300 p-3.5 bg-gray-50 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition text-right"
+              placeholder="مثال: محمد أحمد"
+              required
+            />
+          </div>
+
+          <!-- Input Group -->
+          <div>
+            <label class="block text-xs font-bold mb-2 text-gray-800 text-right"
+              >رقم الهاتف | TÉLÉPHONE <span class="text-red-500">*</span></label
+            >
+            <input
+              type="tel"
+              placeholder="0555 00 00 00"
+              class="w-full border border-gray-300 p-3.5 bg-gray-50 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition text-left"
+              dir="ltr"
+              required
+            />
+          </div>
+
+          <!-- Select Group -->
+          <div>
+            <label class="block text-xs font-bold mb-2 text-gray-800 text-right"
+              >نوع التوصيل | TYPE DE LIVRAISON
+              <span class="text-red-500">*</span></label
+            >
+            <select
+              class="w-full border border-gray-300 p-3.5 bg-gray-50 text-sm focus:outline-none focus:border-black appearance-none cursor-pointer text-right"
+              required
+            >
+              <option value="">-- اختر نوع التوصيل --</option>
+              <option value="domicile">توصيل للمنزل (Livraison à domicile)</option>
+              <option value="relais">استلام من المكتب (Point relais)</option>
+            </select>
+          </div>
+
+          <!-- Order Recapitulatif -->
+          <div class="mt-10 pt-8 border-t border-gray-200" dir="ltr">
+            <div
+              class="text-[10px] font-bold text-gray-400 text-right mb-6 tracking-widest uppercase"
+            >
+              Récapitulatif
+            </div>
+
+            <!-- Dynamic Cart Items Container -->
+            <div id="cart-items-container">
+              <!-- Rendered dynamically by JavaScript -->
+            </div>
+
+            <!-- Totals -->
+            <div class="space-y-4">
+              <div
+                class="flex justify-between items-center py-2  text-xs font-semibold"
+              >
+                <span class="text-gray-500 tracking-wider uppercase text-[10px]"
+                  >Livraison</span
+                >
+                <span>Gratuit (الـتـوصـيـل مـجـانـي)</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 font-black text-lg text-black"
+              >
+                <span class="tracking-widest uppercase text-sm">Total</span>
+                <span id="checkout-total">DA 0.00</span>
+              </div>
+            </div>
+
+            <!-- Captcha Checkbox -->
+            <div
+              class="border border-gray-200 p-4 mb-6 mt-4 flex items-center gap-3 bg-gray-50 rounded-sm cursor-pointer hover:bg-gray-100 transition"
+            >
+              <input
+                type="checkbox"
+                id="human"
+                class="w-4 h-4 cursor-pointer accent-black"
+                required
+              />
+              <label
+                for="human"
+                class="text-sm font-medium cursor-pointer flex-1 text-left"
+                >Je suis un humain</label
+              >
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="w-full bg-[#1a1a1a] hover:bg-black transition-colors text-white py-4 font-bold text-xs flex justify-center gap-3 items-center rounded-sm"
+            >
+              <span class="tracking-widest uppercase">Confirmer</span>
+              <span class="text-gray-500">—</span>
+              <span class="font-arabic text-sm font-bold">تأكيد الطلب</span>
+            </button>
+          </div>
+        </form>
+      </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="mt-auto bg-black text-white px-6 py-12 sm:p-16 "
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12 border-none pb-8">
+          <h2
+            class="font-black text-2xl sm:text-4xl mb-2 tracking-widest uppercase flex items-center gap-2"
+          >
+            <span class="text-white">ADEM</span><span class="text-white ml-1.5">NUTRITION</span>
+          </h2>
+          <p
+            class="text-[10px] sm:text-xs tracking-[0.2em] text-gray-500 font-bold uppercase"
+          >
+            Fuel Your Ambition — Algérie
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-gray-400"
+        >
+          <!-- Contact Info -->
+          <div>
+            <h4
+              class="text-gray-300 text-[10px] tracking-[0.2em] mb-4 font-bold uppercase"
+            >
+              Contact
+            </h4>
+            <p
+              class="mb-2 hover:text-white transition cursor-pointer font-medium text-left"
+            >
+              +213 541 36 82 16
+            </p>
+            <p class="hover:text-white transition cursor-pointer font-medium text-left">
+              +213 791 76 53 69
+            </p>
+          </div>
+
+          <!-- Stores -->
+          <div>
+            <h4
+              class="text-gray-300 text-[10px] tracking-[0.2em] mb-4 font-bold uppercase"
+            >
+              Nos Magasins
+            </h4>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+              <span
+                class="hover:text-white transition cursor-pointer font-medium text-left"
+                ><i class="ri-map-pin-line mr-2 text-gray-400"></i>Dar El
+                Beida</span
+              >
+              <span
+                class="hover:text-white transition cursor-pointer font-medium text-left"
+                ><i class="ri-map-pin-line mr-2 text-gray-400"></i>Sidi
+                Yahia</span
+              >
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div>
+            <h4
+              class="text-gray-300 text-[10px] tracking-[0.2em] mb-4 font-bold uppercase"
+            >
+              Suivez-nous
+            </h4>
+            <div class="flex gap-3">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                class="w-10 h-10 rounded-sm flex items-center justify-center hover:text-white transition-all"
+              >
+                <i class="ri-facebook-fill text-lg"></i>
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                class="w-10 h-10 rounded-sm flex items-center justify-center hover:text-white transition-all"
+              >
+                <i class="ri-instagram-line text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-16 pt-6 border-none text-[10px] text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4"
+        >
+          <p>© 2026 Adem Nutrition — Tous droits réservés.</p>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition font-bold  text-[9px] uppercase tracking-wider"
+          >
+            ademnutritiondz.com
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Dynamic Products/Packs Data and Interactive Logic -->
+    <script>
+      // 1. Regular Shop Products Array (Tous les produits)
+      const products = [
+        {
+          category: 'proteine',
+          subCategory: 'Whey Isolate',
+          brand: 'Golden Body',
+          onSale: false,
+          title: 'Anabolic Iso+Hydro 1kg Golden Body',
+          price: '10500.00 DA',
+          rating: 4.8,
+          reviews: 142,
+          img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'proteine',
+          subCategory: 'Whey Protein',
+          brand: 'Optimum Nutrition',
+          onSale: true,
+          title: 'Gold Standard 100% Whey - 2.27kg',
+          price: '18000.00 DA',
+          rating: 4.9,
+          reviews: 245,
+          img: 'https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'massgainer',
+          subCategory: 'Gainer',
+          brand: 'Applied Nutrition',
+          onSale: true,
+          title: 'Critical Mass Professional 6kg',
+          price: '14500.00 DA',
+          rating: 4.7,
+          reviews: 128,
+          img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=400&h=400'
+        },
+        {
+          category: 'massgainer',
+          subCategory: 'Gainer',
+          brand: 'Optimum Nutrition',
+          onSale: false,
+          title: 'Serious Mass 5.4kg Optimum Nutrition',
+          price: '16000.00 DA',
+          rating: 4.6,
+          reviews: 210,
+          img: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'creatine',
+          subCategory: 'Creatine Monohydrate',
+          brand: 'Dymatize',
+          onSale: false,
+          title: 'Creatine 500g Dymatize',
+          price: '6500.00 DA',
+          rating: 4.9,
+          reviews: 134,
+          img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'creatine',
+          subCategory: 'Creatine Monohydrate',
+          brand: 'Muscletech',
+          onSale: true,
+          title: 'Platinum Creatine Muscletech 400g',
+          price: '5800.00 DA',
+          rating: 4.8,
+          reviews: 89,
+          img: 'https://images.unsplash.com/photo-1579722822180-2a212353f86e?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'booster',
+          subCategory: 'Pre-Workout',
+          brand: 'Cellucor',
+          onSale: false,
+          title: 'C4 Original Pre-Workout 30 Serv',
+          price: '6000.00 DA',
+          rating: 4.5,
+          reviews: 95,
+          img: 'https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'fatburner',
+          subCategory: 'Fat Burner',
+          brand: 'Life Pro',
+          onSale: true,
+          title: 'Life Pro Thermo 90 Caps',
+          price: '5500.00 DA',
+          rating: 4.4,
+          reviews: 38,
+          img: 'https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'fatburner',
+          subCategory: 'Fat Burner',
+          brand: 'Nutrex',
+          onSale: false,
+          title: 'Lipo 6 Black Ultra Concentrate',
+          price: '7200.00 DA',
+          rating: 4.6,
+          reviews: 42,
+          img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'acides',
+          subCategory: 'BCAA',
+          brand: 'BioTechUSA',
+          onSale: false,
+          title: 'BCAA 8:1:1 Zero - 250g',
+          price: '4500.00 DA',
+          rating: 4.3,
+          reviews: 12,
+          img: 'https://images.unsplash.com/photo-1579722822180-2a212353f86e?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'acides',
+          subCategory: 'BCAA',
+          brand: 'Scivation',
+          onSale: true,
+          title: 'Xtend BCAA 30 Servings',
+          price: '5500.00 DA',
+          rating: 4.8,
+          reviews: 330,
+          img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'vitamines',
+          subCategory: 'Vitamines',
+          brand: 'BioTechUSA',
+          onSale: false,
+          title: 'Omega 3 Fish Oil 1000mg',
+          price: '3200.00 DA',
+          rating: 4.7,
+          reviews: 23,
+          img: 'https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'vitamines',
+          subCategory: 'Vitamines',
+          brand: 'BioTechUSA',
+          onSale: false,
+          title: 'Daily Multivitamin Complex 90 Tabs',
+          price: '2500.00 DA',
+          rating: 4.2,
+          reviews: 14,
+          img: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'snacks',
+          subCategory: 'Snacks',
+          brand: 'Snickers',
+          onSale: false,
+          title: 'Protein Bar Snickers',
+          price: '600.00 DA',
+          rating: 4.9,
+          reviews: 80,
+          img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=400&h=400'
+        },
+        {
+          category: 'collagene',
+          subCategory: 'Collagene',
+          brand: 'Applied Nutrition',
+          onSale: false,
+          title: 'Marine Collagen Peptides',
+          price: '8500.00 DA',
+          rating: 4.5,
+          reviews: 15,
+          img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=400&h=400'
+        }
+      ];
+
+      // 2. Separate Custom Packs/Specials Array (الأقسام الأخرى)
+      const packs = [
+        {
+          id: 'life-pro-thermo-10',
+          title: 'LIFE PRO THERMO 10',
+          price: '8900.00 DA',
+          rating: 5,
+          reviews: 42,
+          img: 'https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&q=80&w=800',
+          description: 'Une formule thermogénique de pointe conçue par Life Pro pour accélérer l’oxydation des graisses et maximiser l’énergie durant vos séances d’entraînement les plus intenses.'
+        },
+        {
+          id: 'pack-prise-masse',
+          title: 'Pack Prise de Masse',
+          price: '25500.00 DA',
+          rating: 4.5,
+          reviews: 24,
+          img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800',
+          description: 'Le trio suprême : Protéine d’assimilation rapide, Mass Gainer ultra calorique, et Shaker officiel ADEN. Conçu spécialement pour la croissance de vos fibres musculaires.'
+        },
+        {
+          id: 'pack-seche-extreme',
+          title: 'Pack Sèche Extreme',
+          price: '18900.00 DA',
+          rating: 5,
+          reviews: 18,
+          img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800',
+          description: 'Idéal pour dessiner votre silhouette. Contient des brûleurs thermogéniques puissants, de la L-Carnitine, et une Whey isolée pure de très haute valeur biologique.'
+        }
+      ];
+
+      // Cart Storage state
+      let cart = [
+        {
+          title: 'Cream Of Rice 2kg Nutrifit',
+          price: 2500.00,
+          img: 'https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&q=80&w=150&h=150',
+          quantity: 1
+        }
+      ];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuContent = document.getElementById("mobile-menu-content");
+
+        // Open Mobile Menu
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.remove("hidden");
+          void mobileMenu.offsetWidth;
+          mobileMenuContent.classList.remove("-translate-x-full");
+        });
+
+        // Close Mobile Menu
+        const closeMenu = () => {
+          mobileMenuContent.classList.add("-translate-x-full");
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
+          }, 300);
+        };
+
+        if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+        if (mobileMenu) mobileMenu.addEventListener("click", (e) => {
+          if (e.target === mobileMenu) closeMenu();
+        });
+
+        // Dynamic Products Renderer (Tous les produits grid)
+        window.renderProductsToGrid = (filtered, isSingleColumnOnMobile = false) => {
+          const grid = document.getElementById("all-products-section");
+          if (!grid) return;
+
+          grid.innerHTML = filtered.map((p, idx) => {
+            let starsHtml = "";
+            const starCount = Math.round(p.rating);
+            // Render 5 hollow outline stars to match the screenshot precisely, or follow rating
+            for (let i = 0; i < 5; i++) {
+              if (p.reviews > 0 && i < starCount) {
+                starsHtml += '<i class="ri-star-fill text-[#000000]"></i>';
+              } else {
+                starsHtml += '<i class="ri-star-line text-gray-300"></i>';
+              }
+            }
+
+            const imgHeightClass = isSingleColumnOnMobile ? "h-[440px] sm:h-72 md:h-52" : "h-40 sm:h-52";
+
+            return `
+              <!-- Product Card: Balanced & Clean Grid -->
+              <div class="product-item bg-white flex flex-col group transition duration-300 rounded-sm relative overflow-hidden" data-category="${p.category}">
+                <!-- Image Wrapper -->
+                <div class="relative p-2 sm:p-6 flex justify-center items-center ${imgHeightClass} bg-white select-none cursor-pointer" onclick="showQuickView('${p.title}', '${p.price}', '${p.img}', '${p.category}')">
+                  <img src="${p.img}" alt="${p.title}" class="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition duration-300" />
+                  
+                  <!-- Quick View Square Eye Button matching screenshot exactly -->
+                  <button 
+                    type="button"
+                    class="absolute right-4 top-[40%] -translate-y-1/2 w-9 h-9 border border-gray-200 bg-white flex items-center justify-center text-gray-800 hover:text-black hover:border-black transition shadow-sm z-10"
+                    onclick="event.stopPropagation(); showQuickView('${p.title}', '${p.price}', '${p.img}', '${p.category}')"
+                    title="Aperçu rapide"
+                  >
+                    <i class="ri-eye-line text-[16px]"></i>
+                  </button>
+                </div>
+                <!-- ACHAT DIRECT Button -->
+                <div 
+                  class="bg-[#161616] text-white text-[9px] sm:text-[10px] text-center py-2.5 tracking-widest font-extrabold uppercase cursor-pointer hover:bg-black transition"
+                  onclick="purchaseDirect('${p.title}', '${p.price}', '${p.img}')"
+                >
+                  ACHAT DIRECT
+                </div>
+                <!-- Details Body -->
+                <div class="p-3 sm:p-4 flex flex-col flex-1">
+                  <h4 class="text-[11px] sm:text-xs font-medium mb-1.5 leading-snug line-clamp-2 uppercase tracking-wide text-gray-900 min-h-[32px] cursor-pointer hover:text-gray-500" onclick="showQuickView('${p.title}', '${p.price}', '${p.img}', '${p.category}')">
+                    ${p.title.toUpperCase()}
+                  </h4>
+                  <div class="text-[13px] sm:text-base font-black mb-2 text-black tracking-tight">
+                    ${p.price}
+                  </div>
+                  <div class="text-gray-300 text-[10px] sm:text-xs mb-3 flex items-center gap-0.5">
+                    ${starsHtml}
+                    <span class="text-gray-400 ml-1 font-sans">(${p.reviews || 0})</span>
+                  </div>
+                  
+                  <!-- Stacked Quantity Selector & Add-To-Cart Button -->
+                  <div class="mt-auto flex flex-col gap-2">
+                    <div class="h-8 border border-gray-200 rounded-sm bg-white flex relative overflow-hidden">
+                      <input 
+                        type="number" 
+                        value="1" 
+                        min="1" 
+                        class="w-full text-left pl-3 text-xs font-medium bg-white text-black focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" 
+                      />
+                    </div>
+                    
+                    <button 
+                      class="w-full h-10 bg-black hover:bg-gray-900 transition text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest rounded-sm flex items-center justify-center gap-1"
+                      onclick="addToCart('${p.title}', '${p.price}', '${p.img}', this)"
+                    >
+                      AJOUTER AU PANIER
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        };
+
+        // Dynamic Packs Renderer (Other custom sections)
+        window.renderPacksToSection = () => {
+          const section = document.getElementById("special-packs-section");
+          if (!section) return;
+
+          section.innerHTML = packs.map((pack) => {
+            let starsHtml = "";
+            for (let i = 0; i < 5; i++) {
+              if (i < Math.floor(pack.rating)) {
+                starsHtml += '<i class="ri-star-fill text-[#000000] text-xl"></i>';
+              } else {
+                starsHtml += '<i class="ri-star-line text-neutral-700 text-xl"></i>';
+              }
+            }
+
+            return `
+              <!-- Premium Custom Pack: High-Impact Hero Card -->
+              <div class="bg-[#0f0f0f] border border-neutral-900 rounded-sm overflow-hidden flex flex-col md:flex-row shadow-2xl transition duration-500 w-full mb-10 relative">
+                <!-- Large Custom Stretched Image Area -->
+                <div class="relative md:w-3/5 bg-neutral-950 flex justify-center items-center overflow-hidden min-h-[400px] sm:min-h-[550px] md:h-[700px] lg:h-[750px] border-b md:border-b-0 md:border-r border-neutral-900">
+                  <img
+                    src="${pack.img}"
+                    alt="${pack.title}"
+                    class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-700 filter brightness-90"
+                  />
+                  <span class="absolute top-6 left-6 bg-[#000000] text-white text-[10px] font-black tracking-widest px-4 py-2 uppercase rounded-sm z-10 shadow-lg">
+                    SÉLECTION DU COACH
+                  </span>
+                </div>
+
+                <!-- Custom Elegant Dark Details Panel -->
+                <div class="pack-details-panel p-8 sm:p-12 md:p-16 flex flex-col justify-between md:w-2/5 bg-[#161616] text-white">
+                  <div>
+                    <span class="text-[#000000] text-xs font-black tracking-widest uppercase mb-3 block">ADEN SPECIAL PROMOTIONS</span>
+                    <h3 class="text-2xl sm:text-4xl font-black text-white leading-tight uppercase tracking-tight mb-4 font-sans">
+                      ${pack.title}
+                    </h3>
+                    
+                    <div class="flex items-center gap-1.5 mb-6 text-[#000000]">
+                      ${starsHtml}
+                      <span class="text-neutral-400 text-xs ml-2">(${pack.reviews} avis clients)</span>
+                    </div>
+
+                    <p class="text-neutral-400 text-xs sm:text-sm font-medium mb-8 leading-relaxed">
+                      ${pack.description}
+                    </p>
+
+                    <div class="text-3xl sm:text-4xl font-black text-[#000000] mb-8 tracking-tight">
+                      ${pack.price}
+                    </div>
+                  </div>
+
+                  <div class="space-y-4">
+                    <!-- ACHAT DIRECT Button for instantaneous checkout -->
+                    <button 
+                      class="w-full bg-[#000000] hover:bg-[#333333] text-white text-xs font-extrabold py-4 uppercase tracking-[0.2em] transition duration-300 rounded-sm shadow-md"
+                      onclick="purchaseDirect('${pack.title}', '${pack.price}', '${pack.img}')"
+                    >
+                      ACHAT DIRECT EXPRESS
+                    </button>
+
+                    <!-- Quantité Box + Ajouter au panier Row -->
+                    <div class="flex gap-2.5 h-[48px]">
+                      <div class="flex items-center border border-neutral-800 rounded-sm bg-[#222222] overflow-hidden h-full">
+                        <button type="button" class="px-3.5 bg-neutral-900 hover:bg-neutral-800 text-white transition h-full font-bold text-sm border-r border-neutral-800" onclick="decrementQty(this)">-</button>
+                        <input type="number" value="1" min="1" class="w-10 text-center text-xs font-bold focus:outline-none bg-[#222222] text-white h-full" />
+                        <button type="button" class="px-3.5 bg-neutral-900 hover:bg-neutral-800 text-white transition h-full font-bold text-sm border-l border-neutral-800" onclick="incrementQty(this)">+</button>
+                      </div>
+
+                      <button 
+                        class="bg-white hover:bg-neutral-200 text-black text-[10px] sm:text-xs font-extrabold px-6 flex-1 uppercase tracking-widest rounded-sm flex items-center justify-center gap-2 transition duration-300"
+                        onclick="addToCart('${pack.title}', '${pack.price}', '${pack.img}', this)"
+                      >
+                        <i class="ri-shopping-cart-fill text-sm"></i> AJOUTER AU PANIER
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        };
+
+        // Render Checkout Recap dynamically
+        window.renderCart = () => {
+          const container = document.getElementById("cart-items-container");
+          const totalContainer = document.getElementById("checkout-total");
+          if (!container) return;
+
+          if (cart.length === 0) {
+            container.innerHTML = `
+              <div class="text-center py-8 text-gray-400 font-medium text-xs uppercase tracking-wider">
+                Votre panier est vide
+              </div>
+            `;
+            if (totalContainer) totalContainer.textContent = "DA 0.00";
+            return;
+          }
+
+          let total = 0;
+          container.innerHTML = cart.map((item, idx) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            return `
+              <!-- Dynamic Cart Recap Row -->
+              <div class="flex justify-between items-center mb-4 bg-white p-3 border border-gray-100 rounded-sm">
+                <div class="flex items-center gap-4">
+                  <img
+                    src="${item.img}"
+                    alt="${item.title}"
+                    class="w-14 h-14 object-contain border border-gray-100 bg-white p-1"
+                  />
+                  <div class="text-xs font-bold text-gray-800 text-left">
+                    <div class="mb-1 uppercase tracking-tight text-[11px]">${item.title}</div>
+                    <div class="text-gray-500 font-medium">DA ${item.price.toFixed(2)}</div>
+                    <div class="flex items-center gap-3 mt-2">
+                      <div class="flex items-center border border-gray-300 rounded bg-white overflow-hidden">
+                        <button
+                          type="button"
+                          class="px-2 py-0.5 bg-gray-50  text-gray-600 font-extrabold"
+                          onclick="updateCartQty(${idx}, -1)"
+                        >
+                          -
+                        </button>
+                        <span class="px-2 font-bold text-[11px]">${item.quantity}</span>
+                        <button
+                          type="button"
+                          class="px-2 py-0.5 bg-gray-50  text-gray-600 font-extrabold"
+                          onclick="updateCartQty(${idx}, 1)"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <button
+                        type="button"
+                        class="text-gray-400 hover:text-red-500 transition"
+                        onclick="removeFromCart(${idx})"
+                      >
+                        <i class="ri-close-line text-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="font-extrabold text-xs sm:text-sm text-black">DA ${itemTotal.toFixed(2)}</div>
+              </div>
+            `;
+          }).join('');
+
+          if (totalContainer) totalContainer.textContent = `DA ${total.toFixed(2)}`;
+
+          // Update header cart bag badge
+          const badge = document.querySelector(".ri-shopping-bag-line + span");
+          if (badge) {
+            badge.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+          }
+        };
+
+        // Cart Actions
+        window.updateCartQty = (idx, delta) => {
+          cart[idx].quantity += delta;
+          if (cart[idx].quantity <= 0) {
+            cart.splice(idx, 1);
+          }
+          renderCart();
+        };
+
+        window.removeFromCart = (idx) => {
+          cart.splice(idx, 1);
+          renderCart();
+        };
+
+        window.addToCart = (title, priceStr, img, btn) => {
+          const price = parseFloat(priceStr.replace(/[^\d.]/g, '')) || 0;
+          let qty = 1;
+          const parentCard = btn.closest('.product-item') || btn.closest('.pack-details-panel') || btn.closest('.p-6') || btn.closest('.pt-6') || btn.closest('.p-10');
+          if (parentCard) {
+            const qtyInput = parentCard.querySelector('input[type="number"]');
+            if (qtyInput) qty = parseInt(qtyInput.value) || 1;
+          }
+
+          const existing = cart.find(item => item.title === title);
+          if (existing) {
+            existing.quantity += qty;
+          } else {
+            cart.push({ title, price, img, quantity: qty });
+          }
+          renderCart();
+
+          // Action Confirmation visual feedback
+          const orig = btn.innerHTML;
+          btn.innerHTML = '<i class="ri-check-line text-green-400"></i> AJOUTÉ !';
+          btn.classList.add('bg-green-800');
+          setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.classList.remove('bg-green-800');
+          }, 1500);
+        };
+
+        window.openCartPage = () => {
+          const navCart = document.getElementById("nav-cart");
+          if (navCart) {
+            setActiveTab(navCart);
+          } else {
+            const viewCart = document.getElementById("view-cart");
+            if (viewCart) {
+              viewCart.classList.remove("hidden");
+              ["view-home", "view-packs", "view-categories"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add("hidden");
+              });
+            }
+          }
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        window.purchaseDirect = (title, priceStr, img) => {
+          const price = parseFloat(priceStr.replace(/[^\d.]/g, '')) || 0;
+          const existing = cart.find(item => item.title === title);
+          if (!existing) {
+            cart.push({ title, price, img, quantity: 1 });
+          }
+          renderCart();
+
+          // Open cart page
+          window.openCartPage();
+        };
+
+        window.incrementQty = (btn) => {
+          const inp = btn.parentNode.querySelector('input[type="number"]');
+          if (inp) inp.value = parseInt(inp.value) + 1;
+        };
+
+        window.decrementQty = (btn) => {
+          const inp = btn.parentNode.querySelector('input[type="number"]');
+          if (inp && parseInt(inp.value) > 1) inp.value = parseInt(inp.value) - 1;
+        };
+
+        // Tab Switching Logic
+        const tabs = [
+          {
+            nav: document.getElementById("nav-packs"),
+            view: document.getElementById("view-packs"),
+          },
+          {
+            nav: document.getElementById("nav-products"),
+            view: document.getElementById("view-home"),
+          },
+          {
+            nav: document.getElementById("nav-categories"),
+            view: document.getElementById("view-categories"),
+          },
+          {
+            nav: document.getElementById("nav-cart"),
+            view: document.getElementById("view-cart"),
+          },
+        ];
+
+        const setActiveTab = (activeNav) => {
+          tabs.forEach((tab) => {
+            if (tab.nav) {
+              if (tab.nav === activeNav) {
+                tab.nav.classList.add("text-black", "border-b-2", "border-black", "pb-1");
+                tab.nav.classList.remove("text-gray-400", "text-[#000000]");
+                if (tab.view) tab.view.classList.remove("hidden");
+              } else {
+                tab.nav.classList.remove("text-black", "border-b-2", "border-black", "pb-1");
+                if (tab.nav.id === "nav-cart") {
+                  tab.nav.classList.add("text-[#000000]");
+                } else {
+                  tab.nav.classList.add("text-gray-400");
+                }
+                if (tab.view) tab.view.classList.add("hidden");
+              }
+            }
+          });
+        };
+
+        tabs.forEach((tab) => {
+          if (tab.nav) {
+            tab.nav.addEventListener("click", (e) => {
+              e.preventDefault();
+              setActiveTab(tab.nav);
+              if (tab.nav.id === "nav-products") {
+                filterProducts("all");
+              }
+            });
+          }
+        });
+
+        window.currentCategory = "all";
+        window.currentMobileLayout = "single";
+
+        window.setMobileLayout = (mode) => {
+          window.currentMobileLayout = mode;
+          const allProductsSection = document.getElementById("all-products-section");
+          if (!allProductsSection) return;
+
+          // Update layout button styles to match active/inactive states
+          const btn1 = document.getElementById("layout-btn-1");
+          const btn2 = document.getElementById("layout-btn-2");
+          const btn3 = document.getElementById("layout-btn-3");
+
+          [btn1, btn2, btn3].forEach(btn => {
+            if (btn) {
+              btn.className = "w-8 h-8 border border-gray-200 rounded-sm flex items-center justify-center bg-white text-gray-400 hover:text-black hover:border-gray-400 transition";
+            }
+          });
+
+          const activeBtn = mode === 'single' ? btn1 : (mode === 'double' ? btn2 : btn3);
+          if (activeBtn) {
+            activeBtn.className = "w-8 h-8 border border-black rounded-sm flex items-center justify-center bg-white text-black transition";
+          }
+
+          const category = window.currentCategory || "all";
+          const filtered = category === "all" ? products : products.filter(p => p.category === category);
+
+          if (mode === "single") {
+            allProductsSection.className = "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4";
+            renderProductsToGrid(filtered, true);
+          } else if (mode === "double") {
+            allProductsSection.className = "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4";
+            renderProductsToGrid(filtered, false);
+          } else if (mode === "list") {
+            allProductsSection.className = "grid grid-cols-1 gap-4";
+            renderProductsToGrid(filtered, true);
+          }
+        };
+
+        // Filter Products (Tous les produits view)
+        window.filterProducts = (category, categoryName = "") => {
+          window.currentCategory = category;
+          if (category === "packs") {
+            setActiveTab(document.getElementById("nav-packs"));
+            return;
+          }
+
+          setActiveTab(document.getElementById("nav-products"));
+
+          // Reset sidebar filters visually when changing categories
+          window.filterSoldeState = false;
+          const thumb = document.getElementById("toggle-solde-thumb");
+          const toggleBtn = document.getElementById("toggle-solde");
+          if (thumb) {
+            thumb.className = "w-[18px] h-[18px] bg-black transition-all duration-200 transform translate-x-0";
+            if (toggleBtn) toggleBtn.classList.remove("border-black");
+          }
+          const priceSelect = document.getElementById("filter-price");
+          if (priceSelect) priceSelect.value = "all";
+          const subCatSelect = document.getElementById("filter-subcategory");
+          if (subCatSelect) subCatSelect.value = "all";
+          const brandSelect = document.getElementById("filter-brand");
+          if (brandSelect) brandSelect.value = "all";
+
+          const heroBanner = document.getElementById("hero-banner");
+          const productsTabs = document.getElementById("products-tabs");
+          const categoryHeader = document.getElementById("category-header");
+          const categoryTitle = document.getElementById("category-title");
+          const categoryCount = document.getElementById("category-count");
+          const allProductsSection = document.getElementById("all-products-section");
+
+          // Render only corresponding category
+          const filtered = category === "all" ? products : products.filter(p => p.category === category);
+
+          if (category === "all") {
+            if (heroBanner) heroBanner.style.display = "block";
+            if (productsTabs) productsTabs.style.display = "flex";
+            if (categoryHeader) {
+              categoryHeader.style.display = "none";
+            }
+            // Set grid to 2 columns on mobile for "All Products"
+            if (allProductsSection) {
+              allProductsSection.className = "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4";
+            }
+            renderProductsToGrid(filtered, false);
+          } else {
+            if (heroBanner) heroBanner.style.display = "none";
+            if (productsTabs) productsTabs.style.display = "none";
+            if (categoryHeader) {
+              categoryHeader.style.display = "flex";
+              categoryTitle.textContent = categoryName || category.toUpperCase();
+              categoryCount.textContent = `${filtered.length} produit${filtered.length !== 1 ? "s" : ""} trouvé${filtered.length !== 1 ? "s" : ""}`;
+            }
+            
+            // Set grid column layout dynamically according to window.currentMobileLayout
+            if (allProductsSection) {
+              if (window.currentMobileLayout === "double") {
+                allProductsSection.className = "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4";
+                renderProductsToGrid(filtered, false);
+              } else {
+                allProductsSection.className = "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4";
+                renderProductsToGrid(filtered, true);
+              }
+            }
+          }
+        };
+
+        // Category clicking logic
+        document.querySelectorAll(".category-item").forEach((item) => {
+          item.addEventListener("click", () => {
+            const target = item.dataset.target || "all";
+            const categoryName = item.querySelector("span") ? item.querySelector("span").textContent : "";
+            filterProducts(target, categoryName);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
+
+        // Sidebar link logic
+        document.querySelectorAll(".sidebar-link").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = link.dataset.target || "all";
+            const categoryName = link.textContent.trim();
+            filterProducts(target, categoryName);
+            closeMenu();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
+
+        // Checkout Form Submit Handler
+        const form = document.querySelector("form");
+        if (form) {
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (cart.length === 0) {
+              alert("عذراً، سلة التسوق الخاصة بك فارغة. الرجاء إضافة منتج قبل تأكيد الطلب.");
+              return;
+            }
+            const name = form.querySelector('input[type="text"]').value;
+            const tel = form.querySelector('input[type="tel"]').value;
+            const type = form.querySelector('select').value;
+
+            alert(`Félicitations ${name} !\nVotre commande a été enregistrée avec succès. Nous vous contacterons par téléphone au (${tel}) pour confirmer les détails de livraison.\n\nشكراً لثقتكم بمحلات ADEM NUTRITION !`);
+            cart = [];
+            renderCart();
+            form.reset();
+          });
+        }
+
+        // Quick View Modal Functions
+        let activeQvProduct = null;
+
+        window.openSearch = () => {
+          const overlay = document.getElementById("search-overlay");
+          const input = document.getElementById("search-input");
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+            if (input) input.focus();
+          }, 10);
+        };
+
+        window.closeSearch = () => {
+          const overlay = document.getElementById("search-overlay");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        };
+
+        window.handleSearch = (e) => {
+          const val = e.target.value.toLowerCase().trim();
+          const resultsContainer = document.getElementById("search-results");
+          const statusEl = document.getElementById("search-status");
+          
+          if (!val) {
+            resultsContainer.innerHTML = '';
+            statusEl.textContent = 'Tapez pour rechercher';
+            return;
+          }
+
+          let allProducts = [];
+          if (typeof products !== 'undefined') allProducts = allProducts.concat(products);
+          if (typeof packs !== 'undefined') allProducts = allProducts.concat(packs);
+
+          const matched = allProducts.filter(p => 
+            p.title.toLowerCase().includes(val) || 
+            (p.brand && p.brand.toLowerCase().includes(val)) ||
+            (p.category && p.category.toLowerCase().includes(val))
+          );
+
+          statusEl.textContent = `${matched.length} RÉSULTAT${matched.length !== 1 ? 'S' : ''} TROUVÉ${matched.length !== 1 ? 'S' : ''}`;
+          
+          if (matched.length > 0) {
+            resultsContainer.innerHTML = matched.map((p, idx) => {
+              let starsHtml = "";
+              const starCount = Math.round(p.rating || 5);
+              for (let i = 0; i < 5; i++) {
+                starsHtml += i < starCount
+                  ? `<i class="ri-star-fill text-[#f39c12]"></i>`
+                  : `<i class="ri-star-line text-gray-300"></i>`;
+              }
+              const isPack = p.id && p.id.startsWith('pack-');
+              return `
+              <div class="product-item bg-white flex flex-col group transition duration-300 rounded-sm relative overflow-hidden" data-category="${p.category || 'pack'}">
+                <div class="relative p-2 sm:p-6 flex justify-center items-center h-48 sm:h-64 bg-white select-none cursor-pointer" onclick="closeSearch(); showQuickView('${p.title.replace(/'/g, "\\'")}', '${p.price}', '${p.img}', '${p.category || 'pack'}')">
+                  <img src="${p.img}" alt="${p.title}" class="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition duration-300" />
+                </div>
+                <div 
+                  class="bg-[#161616] text-white text-[9px] sm:text-[10px] text-center py-2.5 tracking-widest font-extrabold uppercase cursor-pointer hover:bg-black transition"
+                  onclick="purchaseDirect('${p.title.replace(/'/g, "\\'")}', '${p.price}', '${p.img}')"
+                >
+                  Achat Direct
+                </div>
+                <div class="p-3 sm:p-5 flex flex-col flex-grow text-left">
+                  <div class="text-[8px] sm:text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-1">
+                    ${isPack ? 'Pack Spécial' : p.brand}
+                  </div>
+                  <h4 class="text-[11px] sm:text-xs font-medium mb-1.5 leading-snug line-clamp-2 uppercase tracking-wide text-gray-900 min-h-[32px] cursor-pointer hover:text-gray-500" onclick="closeSearch(); showQuickView('${p.title.replace(/'/g, "\\'")}', '${p.price}', '${p.img}', '${p.category || 'pack'}')">
+                    ${p.title.toUpperCase()}
+                  </h4>
+                  <div class="text-[13px] sm:text-base font-black mb-2 text-black tracking-tight">
+                    ${p.price}
+                  </div>
+                </div>
+              </div>
+              `;
+            }).join("");
+          } else {
+            resultsContainer.innerHTML = '';
+          }
+        };
+
+        window.showQuickView = (title, price, img, category) => {
+          const modal = document.getElementById("quickview-modal");
+          const modalContent = modal ? modal.querySelector(".transform") : null;
+          if (!modal || !modalContent) return;
+
+          let p = null;
+          if (typeof products !== 'undefined') p = products.find(x => x.title === title);
+          if (!p && typeof packs !== 'undefined') p = packs.find(x => x.title === title);
+
+          activeQvProduct = p || { title, price, img, category };
+          window.activeQvProduct = activeQvProduct;
+
+          // Populate fields
+          document.getElementById("qv-img").src = img;
+          document.getElementById("qv-img").alt = title;
+          document.getElementById("qv-title").textContent = title.toUpperCase();
+          document.getElementById("qv-price").textContent = price;
+          document.getElementById("qv-badge").textContent = category ? category.toUpperCase() : "PRODUIT";
+          document.getElementById("qv-qty").value = 1;
+
+          // Set description based on category/title
+          let descText = activeQvProduct.description;
+          if (!descText) {
+            descText = "Formule de nutrition sportive avancée élaborée avec des ingrédients rigoureusement sélectionnés pour stimuler l'énergie, maximiser la performance et accélérer la récupération.";
+            if (title.toLowerCase().includes("omega") || title.toLowerCase().includes("daily")) {
+              descText = "Prenez soin de votre vitalité au quotidien avec cette formulation enrichie en micro-nutriments et acides gras essentiels de haute pureté, parfaits pour la récupération et l'équilibre général.";
+            } else if (title.toLowerCase().includes("whey") || title.toLowerCase().includes("protein") || title.toLowerCase().includes("isolat")) {
+              descText = "Cette source de protéine ultra-pure fournit une haute concentration en acides aminés essentiels pour favoriser la reconstruction des fibres musculaires et accélérer la croissance de masse sèche.";
+            } else if (title.toLowerCase().includes("creatine") || title.toLowerCase().includes("créatine")) {
+              descText = "Augmentez significativement votre force musculaire et votre puissance explosive à l'entraînement grâce à cette créatine monohydrate de qualité pharmaceutique.";
+            } else if (title.toLowerCase().includes("thermo") || title.toLowerCase().includes("lipo") || title.toLowerCase().includes("burner")) {
+              descText = "Brûleur de graisse thermogénique puissant conçu pour accélérer le métabolisme, cibler les graisses rebelles et décupler la concentration mentale et l'endurance.";
+            }
+            activeQvProduct.description = descText;
+          }
+          document.getElementById("qv-desc").textContent = descText;
+
+          const qvImg = document.getElementById("qv-img");
+          const qvTitle = document.getElementById("qv-title");
+          const qvPrice = document.getElementById("qv-price");
+          const qvDesc = document.getElementById("qv-desc");
+
+          if (document.body.classList.contains('admin-mode-active')) {
+            if (qvTitle) qvTitle.setAttribute('contenteditable', 'true');
+            if (qvPrice) qvPrice.setAttribute('contenteditable', 'true');
+            if (qvDesc) qvDesc.setAttribute('contenteditable', 'true');
+            if (qvImg) qvImg.classList.add('admin-img-editable');
+          } else {
+            if (qvTitle) qvTitle.removeAttribute('contenteditable');
+            if (qvPrice) qvPrice.removeAttribute('contenteditable');
+            if (qvDesc) qvDesc.removeAttribute('contenteditable');
+            if (qvImg) qvImg.classList.remove('admin-img-editable');
+          }
+
+          // Open modal with beautiful fade/scale transition
+          modal.classList.remove("hidden");
+          // Trigger reflow
+          void modal.offsetWidth;
+          modal.classList.remove("opacity-0");
+          modalContent.classList.remove("scale-95");
+        };
+
+        window.closeQuickView = () => {
+          const modal = document.getElementById("quickview-modal");
+          const modalContent = modal ? modal.querySelector(".transform") : null;
+          if (!modal || !modalContent) return;
+
+          modal.classList.add("opacity-0");
+          modalContent.classList.add("scale-95");
+          setTimeout(() => {
+            modal.classList.add("hidden");
+          }, 300);
+        };
+
+        window.addQuickViewToCart = () => {
+          if (!activeQvProduct) return;
+          const qtyInput = document.getElementById("qv-qty");
+          const qty = parseInt(qtyInput ? qtyInput.value : 1) || 1;
+          const btn = document.getElementById("qv-add-btn");
+          
+          const priceVal = parseFloat(activeQvProduct.price.replace(/[^\d.]/g, '')) || 0;
+          const existing = cart.find(item => item.title === activeQvProduct.title);
+          if (existing) {
+            existing.quantity += qty;
+          } else {
+            cart.push({ title: activeQvProduct.title, price: priceVal, img: activeQvProduct.img, quantity: qty });
+          }
+          renderCart();
+
+          // Button feedback
+          if (btn) {
+            const origText = btn.innerHTML;
+            btn.innerHTML = '<i class="ri-check-line text-green-400"></i> AJOUTÉ !';
+            btn.classList.add('bg-green-800');
+            setTimeout(() => {
+              btn.innerHTML = origText;
+              btn.classList.remove('bg-green-800');
+              closeQuickView();
+            }, 1000);
+          } else {
+            closeQuickView();
+          }
+        };
+
+        // Sidebar Filter States & Interactivity
+        window.filterSoldeState = false;
+
+        window.openFiltersDrawer = () => {
+          const drawer = document.getElementById("filters-drawer");
+          const drawerContent = document.getElementById("filters-drawer-content");
+          if (!drawer || !drawerContent) return;
+
+          drawer.classList.remove("hidden");
+          // Trigger reflow
+          void drawer.offsetWidth;
+          drawer.classList.remove("opacity-0");
+          drawerContent.classList.remove("-translate-x-full");
+        };
+
+        window.closeFiltersDrawer = () => {
+          const drawer = document.getElementById("filters-drawer");
+          const drawerContent = document.getElementById("filters-drawer-content");
+          if (!drawer || !drawerContent) return;
+
+          drawer.classList.add("opacity-0");
+          drawerContent.classList.add("-translate-x-full");
+          setTimeout(() => {
+            drawer.classList.add("hidden");
+          }, 300);
+        };
+
+        window.toggleSoldeFilter = () => {
+          window.filterSoldeState = !window.filterSoldeState;
+          const thumb = document.getElementById("toggle-solde-thumb");
+          const toggleBtn = document.getElementById("toggle-solde");
+          if (thumb) {
+            if (window.filterSoldeState) {
+              thumb.classList.remove("translate-x-0");
+              thumb.classList.add("translate-x-[22px]");
+              if (toggleBtn) toggleBtn.classList.add("border-black");
+            } else {
+              thumb.classList.remove("translate-x-[22px]");
+              thumb.classList.add("translate-x-0");
+              if (toggleBtn) toggleBtn.classList.remove("border-black");
+            }
+          }
+          window.applySidebarFilters();
+        };
+
+        window.resetAllFilters = () => {
+          window.filterSoldeState = false;
+          const thumb = document.getElementById("toggle-solde-thumb");
+          const toggleBtn = document.getElementById("toggle-solde");
+          if (thumb) {
+            thumb.classList.remove("translate-x-[22px]");
+            thumb.classList.add("translate-x-0");
+            if (toggleBtn) toggleBtn.classList.remove("border-black");
+          }
+
+          const priceSelect = document.getElementById("filter-price");
+          if (priceSelect) priceSelect.value = "all";
+
+          const subCatSelect = document.getElementById("filter-subcategory");
+          if (subCatSelect) subCatSelect.value = "all";
+
+          const brandSelect = document.getElementById("filter-brand");
+          if (brandSelect) brandSelect.value = "all";
+
+          window.applySidebarFilters();
+        };
+
+        window.applySidebarFilters = () => {
+          const priceSelectVal = document.getElementById("filter-price") ? document.getElementById("filter-price").value : "all";
+          const subcatVal = document.getElementById("filter-subcategory") ? document.getElementById("filter-subcategory").value : "all";
+          const brandVal = document.getElementById("filter-brand") ? document.getElementById("filter-brand").value : "all";
+
+          // Filter from current selected category
+          const category = window.currentCategory || "all";
+          let filtered = category === "all" ? products : products.filter(p => p.category === category);
+
+          // Apply Solde / Sale filter
+          if (window.filterSoldeState) {
+            filtered = filtered.filter(p => p.onSale === true);
+          }
+
+          // Apply Price range filter
+          if (priceSelectVal !== "all") {
+            filtered = filtered.filter(p => {
+              const numericPrice = parseFloat(p.price.replace(/[^\d.]/g, '')) || 0;
+              if (priceSelectVal === "under-5000") return numericPrice < 5000;
+              if (priceSelectVal === "5000-10000") return numericPrice >= 5000 && numericPrice <= 10000;
+              if (priceSelectVal === "10000-15000") return numericPrice >= 10000 && numericPrice <= 15000;
+              if (priceSelectVal === "over-15000") return numericPrice > 15000;
+              return true;
+            });
+          }
+
+          // Apply Subcategory filter
+          if (subcatVal !== "all") {
+            filtered = filtered.filter(p => p.subCategory === subcatVal);
+          }
+
+          // Apply Brand filter
+          if (brandVal !== "all") {
+            filtered = filtered.filter(p => p.brand === brandVal);
+          }
+
+          // Update item counts in the category headers if relevant
+          const categoryCount = document.getElementById("category-count");
+          if (categoryCount) {
+            categoryCount.textContent = `${filtered.length} produit${filtered.length !== 1 ? "s" : ""} trouvé${filtered.length !== 1 ? "s" : ""}`;
+          }
+
+          // Render the updated products list
+          const allProductsSection = document.getElementById("all-products-section");
+          if (allProductsSection) {
+            const isSingle = !allProductsSection.className.includes("grid-cols-2");
+            renderProductsToGrid(filtered, isSingle);
+          }
+        };
+
+        // Initialize Rendering
+        renderProductsToGrid(products);
+        renderPacksToSection();
+        renderCart();
+
+        window.toggleLanguage = () => {
+          alert("La version arabe sera disponible bientôt ! / النسخة العربية ستتوفر قريباً !");
+        };
+      });
+    </script>
+
+    <!-- Quick View Modal Overlay -->
+    <div
+      id="quickview-modal"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition duration-300 opacity-0"
+      onclick="if(event.target === this) closeQuickView()"
+    >
+      <div class="bg-white max-w-2xl w-full rounded-sm shadow-2xl relative overflow-hidden flex flex-col md:flex-row transform scale-95 transition duration-300">
+        <!-- Close Button -->
+        <button
+          type="button"
+          class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-black hover:text-white transition rounded-full text-gray-500"
+          onclick="closeQuickView()"
+        >
+          <i class="ri-close-line text-lg"></i>
+        </button>
+
+        <!-- Product Image Left Column -->
+        <div class="md:w-1/2 bg-white flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-gray-100 min-h-[300px]">
+          <img
+            id="qv-img"
+            src=""
+            alt=""
+            class="max-h-[260px] max-w-full object-contain mix-blend-multiply"
+          />
+        </div>
+
+        <!-- Product Details Right Column -->
+        <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <span id="qv-badge" class="text-xs font-black tracking-widest uppercase text-gray-400 block mb-1">PRODUIT</span>
+            <h3
+              id="qv-title"
+              class="text-lg sm:text-xl font-bold uppercase tracking-wide text-gray-950 mb-2 leading-tight"
+            >
+              PRODUCT NAME
+            </h3>
+            
+            <!-- Rating -->
+            <div id="qv-rating" class="flex items-center gap-1 text-gray-300 text-xs mb-4">
+              <i class="ri-star-line"></i>
+              <i class="ri-star-line"></i>
+              <i class="ri-star-line"></i>
+              <i class="ri-star-line"></i>
+              <i class="ri-star-line"></i>
+              <span class="text-gray-400 ml-1">(0 avis)</span>
+            </div>
+
+            <!-- Price -->
+            <div
+              id="qv-price"
+              class="text-xl sm:text-2xl font-black text-black mb-4 tracking-tight"
+            >
+              5500.00 DA
+            </div>
+
+            <p
+              id="qv-desc"
+              class="text-gray-500 text-xs sm:text-sm font-medium leading-relaxed mb-6"
+            >
+              Formule de nutrition sportive avancée élaborée avec des ingrédients rigoureusement sélectionnés pour stimuler l'énergie, maximiser la performance et accélérer la récupération.
+            </p>
+          </div>
+
+          <!-- Quantity Box + Add to Cart Button Side-by-Side (Matching screenshot design!) -->
+          <div class="flex gap-2.5 h-11 items-center product-item">
+            <div class="h-full w-12 border border-gray-300 rounded-sm bg-white flex items-center justify-center">
+              <input
+                id="qv-qty"
+                type="number"
+                value="1"
+                min="1"
+                class="w-full text-center text-sm font-bold bg-white text-black focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              />
+            </div>
+
+            <button
+              id="qv-add-btn"
+              class="flex-1 h-full bg-black hover:bg-gray-900 text-white text-[10px] sm:text-[11px] font-black uppercase tracking-widest rounded-sm flex items-center justify-center gap-1.5 transition"
+              onclick="addQuickViewToCart()"
+            >
+              AJOUTER AU PANIER
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters Sidebar Drawer Overlay -->
+    <div
+      id="filters-drawer"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-start hidden transition duration-300 opacity-0"
+      onclick="if(event.target === this) closeFiltersDrawer()"
+    >
+      <div
+        id="filters-drawer-content"
+        class="bg-white w-4/5 max-w-[340px] h-full shadow-2xl p-6 sm:p-8 flex flex-col justify-between transform -translate-x-full transition-transform duration-300 ease-out select-none relative"
+      >
+        <!-- Close Button -->
+        <button
+          type="button"
+          class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center bg-gray-50 hover:bg-black hover:text-white transition rounded-full text-gray-500"
+          onclick="closeFiltersDrawer()"
+        >
+          <i class="ri-close-line text-lg"></i>
+        </button>
+
+        <!-- Top Section -->
+        <div>
+          <!-- Title & Reset -->
+          <div class="flex items-center justify-between mb-4 mt-2">
+            <h2 class="text-xl sm:text-2xl font-black uppercase tracking-widest text-black font-sans">
+              FILTRES
+            </h2>
+            <button
+              id="reset-filters-btn"
+              class="border border-gray-300 rounded-sm px-3 py-1 text-[10px] font-bold tracking-widest text-gray-500 hover:text-black hover:border-black transition uppercase bg-white"
+              onclick="resetAllFilters()"
+            >
+              RÉINITIALISER
+            </button>
+          </div>
+          <!-- Black Divider -->
+          <div class="h-[2px] bg-black w-full mb-6"></div>
+
+          <!-- Price Filter -->
+          <div class="mb-6">
+            <label class="block text-gray-400 text-[11px] font-black uppercase tracking-wider mb-2">PRIX</label>
+            <div class="relative">
+              <select
+                id="filter-price"
+                class="w-full border border-gray-300 rounded-sm p-3 bg-white text-xs font-bold text-black appearance-none focus:outline-none focus:border-black transition pr-10 cursor-pointer"
+                onchange="applySidebarFilters()"
+              >
+                <option value="all">--</option>
+                <option value="under-5000">Moins de 5 000 DA</option>
+                <option value="5000-10000">5 000 DA - 10 000 DA</option>
+                <option value="10000-15000">10 000 DA - 15 000 DA</option>
+                <option value="over-15000">Plus de 15 000 DA</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black">
+                <i class="ri-arrow-down-s-line text-lg"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- On Sale Toggle -->
+          <div class="mb-6 flex items-center justify-between">
+            <label class="text-gray-400 text-[11px] font-black uppercase tracking-wider">PRODUITS EN SOLDE</label>
+            <button
+              id="toggle-solde"
+              type="button"
+              class="w-12 h-6 border border-gray-300 rounded-sm p-[2px] bg-white flex items-center transition cursor-pointer relative"
+              onclick="toggleSoldeFilter()"
+            >
+              <span
+                id="toggle-solde-thumb"
+                class="w-[18px] h-[18px] bg-black transition-all duration-200 transform translate-x-0"
+              ></span>
+            </button>
+          </div>
+
+          <!-- Sub-category Filter -->
+          <div class="mb-6">
+            <label class="block text-gray-400 text-[11px] font-black uppercase tracking-wider mb-2">SOUS-CATÉGORIE</label>
+            <div class="relative">
+              <select
+                id="filter-subcategory"
+                class="w-full border border-gray-300 rounded-sm p-3 bg-white text-xs font-bold text-black appearance-none focus:outline-none focus:border-black transition pr-10 cursor-pointer"
+                onchange="applySidebarFilters()"
+              >
+                <option value="all">Toutes</option>
+                <option value="Whey Isolate">Whey Isolate</option>
+                <option value="Whey Protein">Whey Protein</option>
+                <option value="Gainer">Gainer</option>
+                <option value="Creatine Monohydrate">Creatine Monohydrate</option>
+                <option value="Pre-Workout">Pre-Workout</option>
+                <option value="Fat Burner">Fat Burner</option>
+                <option value="BCAA">BCAA</option>
+                <option value="Vitamines">Vitamines</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black">
+                <i class="ri-arrow-down-s-line text-lg"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brand Filter -->
+          <div class="mb-6">
+            <label class="block text-gray-400 text-[11px] font-black uppercase tracking-wider mb-2">MARQUE</label>
+            <div class="relative">
+              <select
+                id="filter-brand"
+                class="w-full border border-gray-300 rounded-sm p-3 bg-white text-xs font-bold text-black appearance-none focus:outline-none focus:border-black transition pr-10 cursor-pointer"
+                onchange="applySidebarFilters()"
+              >
+                <option value="all">Toutes</option>
+                <option value="Optimum Nutrition">Optimum Nutrition</option>
+                <option value="Dymatize">Dymatize</option>
+                <option value="Muscletech">Muscletech</option>
+                <option value="Life Pro">Life Pro</option>
+                <option value="BioTechUSA">BioTechUSA</option>
+                <option value="Applied Nutrition">Applied Nutrition</option>
+                <option value="Golden Body">Golden Body</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black">
+                <i class="ri-arrow-down-s-line text-lg"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Close Drawer Button -->
+        <div>
+          <button
+            class="w-full bg-black hover:bg-gray-900 text-white font-black uppercase tracking-widest text-[10px] py-3.5 rounded-sm transition shadow-md"
+            onclick="closeFiltersDrawer()"
+          >
+            Fermer / إغلاق
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div
+      id="floating-filters"
+      class="fixed bottom-0 left-0 right-0 pointer-events-none z-50 pb-6 pt-12 px-4 "
+    >
+      <div class="max-w-3xl mx-auto flex justify-center relative items-end">
+        <button
+          class="bg-black pointer-events-auto hover:bg-gray-900 transition text-white text-[11px] font-black py-2.5 px-5 uppercase tracking-[0.15em] rounded-sm flex items-center justify-center gap-1.5 shadow-lg border border-gray-800"
+          onclick="openFiltersDrawer()"
+        >
+          <i class="ri-equalizer-line text-base"></i> FILTRES
+        </button>
+      </div>
+    </div>
+
+    <!-- Admin Dashboard UI -->
+    <button id="admin-trigger" onclick="document.getElementById('admin-login-modal').classList.remove('hidden')" class="fixed bottom-4 left-4 w-10 h-10 bg-white text-black border border-gray-200 rounded-full flex items-center justify-center opacity-30 hover:opacity-100 transition pointer-events-auto z-50 shadow-lg">
+      <i class="ri-settings-3-line"></i>
+    </button>
+
+    <div id="admin-login-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center font-sans">
+      <div class="bg-white p-8 rounded-sm w-80 text-center shadow-2xl">
+        <div class="text-[#000000] text-3xl mb-4"><i class="ri-admin-line"></i></div>
+        <h3 class="font-black text-xl mb-6 uppercase tracking-widest text-black">Accès Admin</h3>
+        <input type="password" id="admin-password" placeholder="Mot de passe" class="w-full border-b-2 border-gray-300 p-2 mb-6 text-center focus:outline-none focus:border-black transition font-bold tracking-widest" />
+        <button id="admin-login-btn" class="w-full bg-black text-white font-black py-3 uppercase tracking-widest hover:bg-[#000000] transition">Entrer</button>
+        <button onclick="document.getElementById('admin-login-modal').classList.add('hidden')" class="w-full text-gray-500 font-bold py-3 uppercase tracking-widest text-xs mt-2 hover:text-black transition">Annuler</button>
+      </div>
+    </div>
+
+    <div id="admin-toolbar" class="fixed top-0 left-0 w-full bg-[#111] text-white z-[100] hidden items-center justify-between px-6 py-3 text-xs shadow-lg font-sans border-b border-[#333]">
+      <div class="font-black tracking-[0.2em] uppercase flex items-center gap-3 text-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e]"></span>
+        MODE ÉDITION
+      </div>
+      <div class="flex items-center gap-4">
+        <button id="admin-save-btn" class="bg-white text-black px-4 py-2 font-black rounded-sm  shadow-sm uppercase tracking-wider text-[10px]">
+          <i class="ri-save-line mr-1 text-sm align-middle"></i> Sauvegarder
+        </button>
+        <button id="admin-download-btn" class="bg-[#000000] text-white px-4 py-2 font-black rounded-sm hover:bg-gray-800 transition shadow-sm uppercase tracking-wider text-[10px]">
+          <i class="ri-download-line mr-1 text-sm align-middle"></i> Télécharger
+        </button>
+        <button id="admin-exit-btn" class="text-gray-400 hover:text-white ml-2 transition">
+          <i class="ri-close-line text-2xl align-middle"></i>
+        </button>
+      </div>
+    </div>
+
+    <style id="admin-styles">
+      .admin-mode-active [contenteditable="true"] {
+        outline: 2px dashed #000000 !important;
+        outline-offset: 4px;
+        cursor: text;
+        transition: all 0.2s;
+      }
+      .admin-mode-active [contenteditable="true"]:hover {
+        background-color: rgba(255, 90, 0, 0.05);
+      }
+      .admin-mode-active [contenteditable="true"]:focus {
+        background-color: rgba(255, 90, 0, 0.1);
+        outline-style: solid !important;
+      }
+      .admin-mode-active .admin-img-editable {
+        outline: 2px dashed #000000 !important;
+        outline-offset: 2px;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+      .admin-mode-active .admin-img-editable:hover {
+        opacity: 0.7;
+        outline-style: solid !important;
+      }
+    </style>
+
+    <script id="admin-panel-script">
+      (function() {
+        let isAdminMode = false;
+        let savedChanges = JSON.parse(localStorage.getItem('adem_admin_changes')) || {
+          staticTexts: {},
+          staticImages: {},
+          products: {},
+          packs: {}
+        };
+        if (!savedChanges.staticImages) savedChanges.staticImages = {};
+
+        const pwdInput = document.getElementById('admin-password');
+        const loginBtn = document.getElementById('admin-login-btn');
+        const loginModal = document.getElementById('admin-login-modal');
+        const toolbar = document.getElementById('admin-toolbar');
+        const exitBtn = document.getElementById('admin-exit-btn');
+        const saveBtn = document.getElementById('admin-save-btn');
+        const downloadBtn = document.getElementById('admin-download-btn');
+
+        loginBtn.addEventListener('click', () => {
+          if (pwdInput.value === 'admin123') {
+            isAdminMode = true;
+            loginModal.classList.add('hidden');
+            toolbar.classList.remove('hidden');
+            document.body.classList.add('admin-mode-active');
+            
+            if (typeof window.filterProducts === 'function') {
+              window.filterProducts(window.currentCategory || 'all');
+            }
+            if (typeof window.renderPacksToSection === 'function') {
+              window.renderPacksToSection();
+            }
+            if (typeof applyStaticImages === 'function') applyStaticImages();
+            pwdInput.value = '';
+          } else {
+            alert('Mot de passe incorrect');
+          }
+        });
+
+        exitBtn.addEventListener('click', () => {
+          isAdminMode = false;
+          toolbar.classList.add('hidden');
+          document.body.classList.remove('admin-mode-active');
+          if (typeof window.filterProducts === 'function') {
+            window.filterProducts(window.currentCategory || 'all');
+          }
+          if (typeof window.renderPacksToSection === 'function') {
+            window.renderPacksToSection();
+          }
+          if (typeof applyStaticImages === 'function') applyStaticImages();
+        });
+
+        saveBtn.addEventListener('click', () => {
+          document.querySelectorAll('[data-editable-id]').forEach(el => {
+            const id = el.getAttribute('data-editable-id');
+            savedChanges.staticTexts[id] = el.innerHTML;
+          });
+          localStorage.setItem('adem_admin_changes', JSON.stringify(savedChanges));
+          
+          const origText = saveBtn.innerHTML;
+          saveBtn.innerHTML = '<i class="ri-check-line mr-1 text-sm align-middle"></i> SAUVEGARDÉ';
+          saveBtn.classList.replace('text-black', 'text-green-600');
+          setTimeout(() => {
+            saveBtn.innerHTML = origText;
+            saveBtn.classList.replace('text-green-600', 'text-black');
+          }, 1500);
+        });
+
+        downloadBtn.addEventListener('click', async () => {
+          try {
+            const response = await fetch(window.location.href);
+            let html = await response.text();
+            
+            html = html.replace(/<script id="adem-admin-overrides">[\s\S]*?<\/script>/, '');
+            
+            const overridesScript = `\n    <script id="adem-admin-overrides">
+      window.ADEM_ADMIN_CHANGES = ${JSON.stringify(savedChanges)};
+    <` + `/script>\n  `;
+            
+            html = html.replace('</body>', overridesScript + '</body>');
+            
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          } catch (err) {
+            alert('Erreur: ' + err.message);
+          }
+        });
+
+        let applyStaticImages;
+
+        document.addEventListener("DOMContentLoaded", () => {
+          if (typeof products !== 'undefined') {
+            products.forEach((p, idx) => { if (!p.id) p.id = 'prod-' + idx; });
+          }
+          if (typeof packs !== 'undefined') {
+            packs.forEach((p, idx) => { if (!p.id) p.id = 'pack-' + idx; });
+          }
+
+          const changes = window.ADEM_ADMIN_CHANGES || savedChanges;
+          if (changes) {
+            if (!changes.staticTexts) changes.staticTexts = {};
+            if (!changes.staticImages) changes.staticImages = {};
+            if (!changes.products) changes.products = {};
+            if (!changes.packs) changes.packs = {};
+          }
+          savedChanges = changes;
+
+          // Quick View Admin Editing Listeners
+          const qvTitle = document.getElementById("qv-title");
+          const qvPrice = document.getElementById("qv-price");
+          const qvDesc = document.getElementById("qv-desc");
+          const qvImg = document.getElementById("qv-img");
+
+          if (qvTitle) {
+            qvTitle.addEventListener('blur', (e) => {
+              const activeP = window.activeQvProduct;
+              if (isAdminMode && activeP && activeP.id) {
+                const newVal = e.target.textContent.trim();
+                activeP.title = newVal;
+                if (activeP.id.startsWith('pack-')) {
+                  savedChanges.packs[activeP.id] = activeP;
+                } else {
+                  savedChanges.products[activeP.id] = activeP;
+                }
+                if (typeof window.filterProducts === 'function') {
+                  window.filterProducts(window.currentCategory || 'all');
+                }
+                if (typeof window.renderPacksToSection === 'function') {
+                  window.renderPacksToSection();
+                }
+              }
+            });
+          }
+
+          if (qvPrice) {
+            qvPrice.addEventListener('blur', (e) => {
+              const activeP = window.activeQvProduct;
+              if (isAdminMode && activeP && activeP.id) {
+                const newVal = e.target.textContent.trim();
+                activeP.price = newVal;
+                if (activeP.id.startsWith('pack-')) {
+                  savedChanges.packs[activeP.id] = activeP;
+                } else {
+                  savedChanges.products[activeP.id] = activeP;
+                }
+                if (typeof window.filterProducts === 'function') {
+                  window.filterProducts(window.currentCategory || 'all');
+                }
+                if (typeof window.renderPacksToSection === 'function') {
+                  window.renderPacksToSection();
+                }
+              }
+            });
+          }
+
+          if (qvDesc) {
+            qvDesc.addEventListener('blur', (e) => {
+              const activeP = window.activeQvProduct;
+              if (isAdminMode && activeP && activeP.id) {
+                const newVal = e.target.textContent.trim();
+                activeP.description = newVal;
+                if (activeP.id.startsWith('pack-')) {
+                  savedChanges.packs[activeP.id] = activeP;
+                } else {
+                  savedChanges.products[activeP.id] = activeP;
+                }
+                if (typeof window.filterProducts === 'function') {
+                  window.filterProducts(window.currentCategory || 'all');
+                }
+                if (typeof window.renderPacksToSection === 'function') {
+                  window.renderPacksToSection();
+                }
+              }
+            });
+          }
+
+          if (qvImg) {
+            qvImg.addEventListener('click', (e) => {
+              const activeP = window.activeQvProduct;
+              if (isAdminMode && activeP && activeP.id) {
+                e.preventDefault(); e.stopPropagation();
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file'; fileInput.accept = 'image/*';
+                fileInput.onchange = (ev) => {
+                  const file = ev.target.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (eLoad) => {
+                      qvImg.src = eLoad.target.result;
+                      activeP.img = eLoad.target.result;
+                      if (activeP.id.startsWith('pack-')) {
+                        savedChanges.packs[activeP.id] = activeP;
+                      } else {
+                        savedChanges.products[activeP.id] = activeP;
+                      }
+                      if (typeof window.filterProducts === 'function') {
+                        window.filterProducts(window.currentCategory || 'all');
+                      }
+                      if (typeof window.renderPacksToSection === 'function') {
+                        window.renderPacksToSection();
+                      }
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                };
+                fileInput.click();
+              }
+            });
+          }
+          
+          const applyStaticTexts = () => {
+            const staticSelectors = [
+              '#hero-banner h1', 
+              '#hero-banner p', 
+              '#hero-banner button',
+              '#view-packs h2',
+              '#category-title'
+            ];
+            staticSelectors.forEach((selector, index) => {
+              document.querySelectorAll(selector).forEach((el, i) => {
+                const id = 'static-' + index + '-' + i;
+                el.setAttribute('data-editable-id', id);
+                if (changes && changes.staticTexts && changes.staticTexts[id]) {
+                  el.innerHTML = changes.staticTexts[id];
+                }
+              });
+            });
+          };
+          applyStaticTexts();
+          
+          applyStaticImages = () => {
+            const staticImgSelectors = [
+              '#hero-banner img',
+              '.category-item img'
+            ];
+            
+            staticImgSelectors.forEach((selector, index) => {
+              document.querySelectorAll(selector).forEach((el, i) => {
+                const id = 'static-img-' + index + '-' + i;
+                el.setAttribute('data-editable-img-id', id);
+                if (changes && changes.staticImages && changes.staticImages[id]) {
+                  el.src = changes.staticImages[id];
+                }
+                
+                if (isAdminMode) {
+                  el.classList.add('cursor-pointer', 'admin-img-editable');
+                  el.onclick = (e) => {
+                    e.preventDefault(); e.stopPropagation();
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file'; fileInput.accept = 'image/*';
+                    fileInput.onchange = (ev) => {
+                      const file = ev.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (eLoad) => {
+                          el.src = eLoad.target.result;
+                          savedChanges.staticImages[id] = eLoad.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    };
+                    fileInput.click();
+                  };
+                } else {
+                  el.classList.remove('cursor-pointer', 'admin-img-editable');
+                  el.onclick = null;
+                }
+              });
+            });
+          };
+          applyStaticImages();
+
+          const applyProductChanges = () => {
+             if (!changes) return;
+             if (changes.products && typeof products !== 'undefined') {
+                products.forEach(p => {
+                   if (changes.products[p.id]) {
+                      Object.assign(p, changes.products[p.id]);
+                   }
+                });
+             }
+             if (changes.packs && typeof packs !== 'undefined') {
+                packs.forEach(p => {
+                   if (changes.packs[p.id]) {
+                      Object.assign(p, changes.packs[p.id]);
+                   }
+                });
+             }
+          };
+          applyProductChanges();
+
+          const origRenderProducts = window.renderProductsToGrid;
+          if (origRenderProducts) {
+            window.renderProductsToGrid = (filtered, isSingle) => {
+              origRenderProducts(filtered, isSingle);
+              
+              if (isAdminMode) {
+                const items = document.querySelectorAll('#all-products-section .product-item');
+                items.forEach((item, index) => {
+                  const p = filtered[index];
+                  const titleEl = item.querySelector('h4');
+                  const priceEl = item.querySelector('.font-black.text-black.tracking-tight');
+                  const imgEl = item.querySelector('img');
+                  
+                  if (titleEl) {
+                    titleEl.setAttribute('contenteditable', 'true');
+                    titleEl.onclick = (e) => { e.preventDefault(); e.stopPropagation(); };
+                    titleEl.addEventListener('blur', (e) => {
+                      p.title = e.target.textContent.trim();
+                      savedChanges.products[p.id] = p;
+                    });
+                  }
+                  if (priceEl) {
+                    priceEl.setAttribute('contenteditable', 'true');
+                    priceEl.onclick = (e) => { e.preventDefault(); e.stopPropagation(); };
+                    priceEl.addEventListener('blur', (e) => {
+                      p.price = e.target.textContent.trim();
+                      savedChanges.products[p.id] = p;
+                    });
+                  }
+                  if (imgEl) {
+                    imgEl.classList.add('cursor-pointer', 'admin-img-editable');
+                    imgEl.onclick = (e) => {
+                      e.preventDefault(); e.stopPropagation();
+                      const fileInput = document.createElement('input');
+                      fileInput.type = 'file'; fileInput.accept = 'image/*';
+                      fileInput.onchange = (ev) => {
+                        const file = ev.target.files[0];
+                        if (file) {
+                          const reader = new FileReader();
+                          reader.onload = (eLoad) => {
+                            imgEl.src = eLoad.target.result;
+                            p.image = eLoad.target.result;
+                            savedChanges.products[p.id] = p;
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      };
+                      fileInput.click();
+                    };
+                  }
+                });
+                
+                applyStaticTexts();
+                document.querySelectorAll('[data-editable-id]').forEach(el => {
+                  el.setAttribute('contenteditable', 'true');
+                  el.onclick = (e) => { e.preventDefault(); e.stopPropagation(); };
+                  el.addEventListener('blur', (e) => {
+                    const id = el.getAttribute('data-editable-id');
+                    savedChanges.staticTexts[id] = el.innerHTML;
+                  });
+                });
+              }
+            };
+          }
+
+          const origRenderPacks = window.renderPacksToSection;
+          if (origRenderPacks) {
+            window.renderPacksToSection = () => {
+              origRenderPacks();
+              
+              if (isAdminMode) {
+                const items = document.querySelectorAll('#special-packs-section > div');
+                items.forEach((item, index) => {
+                  const p = packs[index];
+                  const titleEl = item.querySelector('h3');
+                  const priceEl = item.querySelector('.text-3xl');
+                  const descEl = item.querySelector('p.text-neutral-400');
+                  const imgEl = item.querySelector('img');
+                  
+                  if (titleEl) {
+                    titleEl.setAttribute('contenteditable', 'true');
+                    titleEl.addEventListener('blur', (e) => {
+                      p.title = e.target.textContent.trim();
+                      savedChanges.packs[p.id] = p;
+                    });
+                  }
+                  if (priceEl) {
+                    priceEl.setAttribute('contenteditable', 'true');
+                    priceEl.addEventListener('blur', (e) => {
+                      p.price = e.target.textContent.trim();
+                      savedChanges.packs[p.id] = p;
+                    });
+                  }
+                  if (descEl) {
+                    descEl.setAttribute('contenteditable', 'true');
+                    descEl.addEventListener('blur', (e) => {
+                      p.description = e.target.textContent.trim();
+                      savedChanges.packs[p.id] = p;
+                    });
+                  }
+                  if (imgEl) {
+                    imgEl.classList.add('cursor-pointer', 'admin-img-editable');
+                    imgEl.onclick = (e) => {
+                      e.preventDefault(); e.stopPropagation();
+                      const fileInput = document.createElement('input');
+                      fileInput.type = 'file'; fileInput.accept = 'image/*';
+                      fileInput.onchange = (ev) => {
+                        const file = ev.target.files[0];
+                        if (file) {
+                          const reader = new FileReader();
+                          reader.onload = (eLoad) => {
+                            imgEl.src = eLoad.target.result;
+                            p.image = eLoad.target.result;
+                            savedChanges.packs[p.id] = p;
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      };
+                      fileInput.click();
+                    };
+                  }
+                });
+              }
+            };
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
